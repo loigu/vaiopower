@@ -1,0 +1,108 @@
+'\" t
+.\"     Title: vaiopower
+.\"    Author: David Jurenka <vaiopower.box@mail.jurenka.cz>
+.\" Generator: DocBook XSL Stylesheets v1.75.2 <http://docbook.sf.net/>
+.\"      Date: May 19, 2011
+.\"    Manual: User Manuals
+.\"    Source: vaiopower 0.5
+.\"  Language: English
+.\"
+.TH "VAIOPOWER" "8" "May 19, 2011" "vaiopower 0\&.5" "User Manuals"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+vaiopower \- tool for power management of Sony Vaio laptop devices
+.SH "SYNOPSIS"
+.HP \w'\fBvaiopower\fR\ 'u
+\fBvaiopower\fR \fIdevice\fR \fIaction\fR
+.HP \w'\fBvaiopower\fR\ 'u
+\fBvaiopower\fR {[\fB\-h\fR\ |\ \fB\-\-help\fR] | [\fB\-V\fR\ |\ \fB\-\-version\fR]}
+.SH "DESCRIPTION"
+.PP
+\fBvaiopower\fR
+is a tool for power management of Sony Vaio laptop devices\&. It provides a higher level interface to the power management options offered by the sony\-laptop kernel module\&. Prior to powering a device down, vaiopower makes sure that the device has been deregistered from the system correctly, it unloads all corresponding kernel modules and stops relevant system services\&. After powering a device back up, vaiopower restores its previous state\&.
+.SH "OPTIONS"
+.PP
+\fIdevice\fR
+.RS 4
+Device to be turned on or off\&. Supported devices (choose any one of the aliases):
+.PP
+sound, audio
+.RS 4
+Sound card
+.RE
+.PP
+cd, dvd
+.RS 4
+DVD drive
+.RE
+.PP
+bt, bluetooth
+.RS 4
+Bluetooth adapter
+.RE
+.PP
+wwan
+.RS 4
+WWAN adapter
+.RE
+.RE
+.PP
+\fIaction\fR
+.RS 4
+Either \(lqon\(rq, \(lqup\(rq or \(lq1\(rq for powering the device up, \(lqoff\(rq, \(lqdown\(rq or \(lq0\(rq for turning it off, and \(lqtoggle\(rq for toggling the current state\&.
+.RE
+.PP
+\fB\-h\fR, \fB\-\-help\fR
+.RS 4
+Show summary of options\&.
+.RE
+.PP
+\fB\-V\fR, \fB\-\-version\fR
+.RS 4
+Show version of programme\&.
+.RE
+.SH "FURTHER OPTIONS"
+.PP
+\fBvaiopower\fR
+can be invoked with another four sets of arguments, but none of these are supposed to be run manually by the user\&. They are \(lqboot\(rq, \(lqrfkill\(rq and \(lqdock\(rq, and they are used when vaiopower is automatically invoked at boot time or at specific udev events\&.
+.SH "FILES"
+.PP
+vaiopower\&.conf
+.RS 4
+Configuration file specifying the devices to be automatically disabled at boot time\&.
+.sp
+The location of this file depends on where vaiopower has been installed\&. If the binary was installed under /usr/local/, the config file will be looked for in /usr/local/etc/\&. Otherwise, directory /etc/ will be used\&.
+.RE
+.SH "BUGS"
+.PP
+Bug tracking system can be found at
+\m[blue]\fB\%http://bugs.vaio-utils.org/\fR\m[]
+\&.
+.SH "SEE ALSO"
+.PP
+
+\fBvaiopower.conf\fR(5)
+.SH "AUTHOR"
+.PP
+\fBDavid Jurenka\fR <\&vaiopower\&.box@mail\&.jurenka\&.cz\&>
+.RS 4
+Developer
+.RE

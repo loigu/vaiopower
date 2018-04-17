@@ -1,0 +1,22 @@
+#!/bin/sh
+# Script for maintaining power status of Sony Vaio laptop devices
+# across sleep/resume
+#
+# Part of the vaiopower suite http://vaio-utils.org/power/
+#
+# To be placed in /etc/pm/sleep.d/ or a similar location depending on
+# distribution.
+
+[ -x ###SBINDIR###/vaiopower ] || exit $NA
+
+case "$1" in
+	hibernate|suspend)
+		###SBINDIR###/vaiopower sleep on
+		;;
+	thaw|resume)
+		###SBINDIR###/vaiopower sleep off
+		;;
+	*)
+		exit $NA
+		;;
+esac

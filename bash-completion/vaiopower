@@ -1,0 +1,32 @@
+#
+#  Completion for vaiopower:
+#
+#  vaiopower <device> <action>
+#  vaiopower <option>
+#
+
+have vaiopower &&
+_vaiopower() {
+    local cur prev devices actions opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    devices="sound audio cd dvd	bt bluetooth wwan"
+	actions="on off up down 1 0 toggle "
+	opts="-h --help -V --version"
+
+    case "${prev}" in
+		sound|audio|cd|dvd|bt|bluetooth|wwan)
+			COMPREPLY=($(compgen -W "${actions}" -- ${cur}))
+			;;
+		*)
+			if [[ "${cur}" == -* ]]; then
+				COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
+			else
+				COMPREPLY=($(compgen -W "${devices}" -- ${cur}))
+			fi
+			;;
+    esac
+}
+[ "$have" ] && complete -F _vaiopower vaiopower

@@ -1,0 +1,5 @@
+# udev rules for vaiopower
+
+SUBSYSTEM=="rfkill",   ACTION=="change", ATTR{type}=="wlan", ATTR{state}=="[01]", RUN+="###SBINDIR###/vaiopower rfkill"
+ENV{EVENT}=="dock", KERNEL=="dock.0", SUBSYSTEM=="platform", RUN+="###SBINDIR###/vaiopower dock"
+

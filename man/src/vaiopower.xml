@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+	<!ENTITY dhfirstname "David">
+	<!ENTITY dhsurname   "Jurenka">
+	<!ENTITY dhemail     "vaiopower.box@mail.jurenka.cz">
+	<!ENTITY dhusername  "&dhfirstname; &dhsurname;">
+	<!-- The version information can also be suppressed (just
+	remove it or comment it out. -->
+	<!ENTITY dhrelease   "0.5">
+	<!-- TITLE should be something like "User commands",
+	"&dhpackage; command-line reference" or similar (see e.g.
+	http://www.tldp.org/HOWTO/Man-Page/q2.html). But limit
+	the length to 30 chars.	-->
+	<!ENTITY dhtitle     "User Manuals">
+
+	<!-- This is the application/package name. -->
+	<!ENTITY dhproduct   "vaiopower">
+	<!-- If the application e.g. belongs to a package like X.org,
+	this should be set to the package/suite name instead of
+	dhpackage. -->
+	<!ENTITY dhsuite     "vaiopower">
+	<!-- SECTION should be 1-8, maybe w/ subsection other
+	parameters are allowed: see man(7), man(1) and
+	http://www.tldp.org/HOWTO/Man-Page/q2.html.	-->
+	<!ENTITY dhsection   "8">
+	<!ENTITY dhdate      "May 19, 2011">
+]>
+<refentry>
+	<refentryinfo>
+		<title>&dhtitle;</title>
+		<!-- Better put a suite name instead of &dhpackage; into productname -->
+		<productname>&dhsuite;</productname>
+		<releaseinfo role="version">&dhrelease;</releaseinfo>
+		<authorgroup>
+			<author>
+				<contrib>Developer</contrib>
+				<firstname>&dhfirstname;</firstname>
+				<surname>&dhsurname;</surname>
+				<address>
+					<email>&dhemail;</email>
+				</address>
+			</author>
+		</authorgroup>
+		<date>&dhdate;</date>
+	</refentryinfo>
+	<refmeta>
+		<refentrytitle>&dhproduct;</refentrytitle>
+		<manvolnum>&dhsection;</manvolnum>
+		<refmiscinfo class="version">&dhrelease;</refmiscinfo>
+	</refmeta>
+	<refnamediv>
+		<refname>&dhproduct;</refname>
+		<refpurpose>tool for power management of Sony Vaio laptop devices</refpurpose>
+	</refnamediv>
+	<refsynopsisdiv>
+		<cmdsynopsis>
+			<command>&dhproduct;</command>
+				<arg choice="plain"><replaceable>device</replaceable></arg>
+				<arg choice="plain"><replaceable>action</replaceable></arg>
+		</cmdsynopsis>
+		<cmdsynopsis>
+			<command>&dhproduct;</command>
+      <!-- Normally the help and version options make the programs stop
+			     right after outputting the requested information. -->
+			<group choice="req">
+				<arg choice="plain">
+					<group choice="opt">
+						<arg choice="plain"><option>-h</option></arg>
+						<arg choice="plain"><option>--help</option></arg>
+					</group>
+				</arg>
+				<arg choice="plain">
+					<group choice="opt">
+						<arg choice="plain"><option>-V</option></arg>
+						<arg choice="plain"><option>--version</option></arg>
+					</group>
+				</arg>
+			</group>
+		</cmdsynopsis>
+	</refsynopsisdiv>
+	<refsect1 id="description">
+		<title>DESCRIPTION</title>
+		<para><command>&dhproduct;</command> is a tool for power management of Sony Vaio laptop devices. It
+provides a higher level interface to the power management options offered
+by the sony-laptop kernel module. Prior to powering a device down, vaiopower
+makes sure that the device has been deregistered from the system correctly,
+it unloads all corresponding kernel modules and stops relevant system
+services. After powering a device back up, vaiopower restores its previous
+state.</para>
+	</refsect1>
+	<refsect1 id="options">
+		<title>OPTIONS</title>
+		<variablelist>
+		<!-- Use the variablelist.term.separator and the
+			 variablelist.term.break.after parameters to
+			 control the term elements. -->
+			<varlistentry>
+				<term><replaceable>device</replaceable></term>
+				<listitem>
+					<para>Device to be turned on or off. Supported devices (choose any one of the aliases):</para>
+					<glosslist>
+						<glossentry>
+							<glossterm>sound, audio</glossterm>
+							<glossdef><para>Sound card</para></glossdef>
+						</glossentry>
+						<glossentry>
+							<glossterm>cd, dvd</glossterm>
+							<glossdef><para>DVD drive</para></glossdef>
+						</glossentry>
+						<glossentry>
+							<glossterm>bt, bluetooth</glossterm>
+							<glossdef><para>Bluetooth adapter</para></glossdef>
+						</glossentry>
+						<glossentry>
+							<glossterm>wwan</glossterm>
+							<glossdef><para>WWAN adapter</para></glossdef>
+						</glossentry>
+					</glosslist>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><replaceable>action</replaceable></term>
+				<listitem>
+					<para>Either “on”, “up” or “1” for powering the device up, “off”, “down” or “0” for turning it off, and “toggle” for toggling the current state.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-h</option></term>
+				<term><option>--help</option></term>
+				<listitem>
+					<para>Show summary of options.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-V</option></term>
+				<term><option>--version</option></term>
+				<listitem>
+					<para>Show version of programme.</para>
+				</listitem>
+			</varlistentry>
+		</variablelist>
+	</refsect1>
+		<refsect1 id="foptions">
+		<title>FURTHER OPTIONS	</title>
+		<para><command>&dhproduct;</command> can be invoked with another four sets of arguments, but none of these are supposed to be run manually by the user. They are “boot”, “rfkill” and “dock”, and they are used when vaiopower is automatically invoked at boot time or at specific udev events.</para>
+	</refsect1>
+	<refsect1 id="files">
+		<title>FILES</title>
+		<variablelist>
+			<varlistentry>
+				<term><filename>vaiopower.conf</filename></term>
+				<listitem>
+					<para>Configuration file specifying the devices to be automatically disabled at boot time.</para>
+					<para>The location of this file depends on where vaiopower has been installed. If the binary was installed under /usr/local/, the config file
+					will be looked for in /usr/local/etc/. Otherwise, directory /etc/ will be used.</para>
+				</listitem>
+			</varlistentry>
+		</variablelist>
+	</refsect1>
+	<refsect1 id="bugs">
+		<title>BUGS</title>
+		<para>Bug tracking system can be found at <ulink url="http://bugs.vaio-utils.org/"/> .</para>
+	</refsect1>
+	<refsect1 id="see_also">
+		<title>SEE ALSO</title>
+		<!-- In alphabetical order. -->
+		<para>
+			<citerefentry>
+				<refentrytitle>vaiopower.conf</refentrytitle>
+				<manvolnum>5</manvolnum>
+			</citerefentry>
+		</para>
+	</refsect1>
+</refentry>

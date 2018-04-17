@@ -1,0 +1,45 @@
+#!/bin/sh
+#
+# vaiopower, power management tool for Sony Vaio
+#
+# chkconfig: - 99 1
+# description: Vaiopower is a tool for power management of Sony Vaio \
+#              laptop devices. It is invoked at boot time and disables \
+#              all devices listed in vaiopower.conf.
+
+### BEGIN INIT INFO
+# Provides:          vaiopower
+# Required-Start:    $local_fs $remote_fs
+# Required-Stop:     $local_fs $remote_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:
+# Short-Description: Power management tool for Sony Vaio
+# Description:       Vaiopower is a tool for power management of Sony Vaio
+#					 laptop devices. It is invoked at boot time and disables
+#					 all devices listed in vaiopower.conf.
+### END INIT INFO
+
+PATH=/sbin:/usr/sbin:/bin:/usr/bin
+DESC="Power management tool for Sony Vaio"
+NAME=vaiopower
+DAEMON=/usr/sbin/$NAME # must be changed if installed elsewhere
+DAEMON_ARGS="boot"
+
+# Exit if the package is not installed
+[ -x "$DAEMON" ] || exit 0
+
+case "$1" in
+  start|force-reload|restart)
+	$DAEMON $DAEMON_ARGS
+	exit $?
+	;;
+  stop)
+	# No-op
+	;;
+  *)
+	echo "Usage: $0 {start|restart|force-reload|stop}" >&2
+	exit 3
+	;;
+esac
+
+exit 0

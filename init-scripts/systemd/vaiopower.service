@@ -1,0 +1,9 @@
+[Unit]
+Description=Power management tool for Sony Vaio
+After=local-fs.target remote-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/vaiopower boot
+StandardError=syslog
+SyslogLevel=err

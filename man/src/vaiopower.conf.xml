@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+	<!ENTITY dhfirstname "David">
+	<!ENTITY dhsurname   "Jurenka">
+	<!ENTITY dhemail     "vaiopower.box@mail.jurenka.cz">
+	<!ENTITY dhusername  "&dhfirstname; &dhsurname;">
+	<!-- The version information can also be suppressed (just
+	remove it or comment it out. -->
+	<!ENTITY dhrelease   "0.5">
+	<!-- TITLE should be something like "User commands",
+	"&dhpackage; command-line reference" or similar (see e.g.
+	http://www.tldp.org/HOWTO/Man-Page/q2.html). But limit
+	the length to 30 chars.	-->
+	<!ENTITY dhtitle     "User Manuals">
+
+	<!-- This is the application/package name. -->
+	<!ENTITY dhproduct   "vaiopower.conf">
+	<!-- If the application e.g. belongs to a package like X.org,
+	this should be set to the package/suite name instead of
+	dhpackage. -->
+	<!ENTITY dhsuite     "vaiopower">
+	<!-- SECTION should be 1-8, maybe w/ subsection other
+	parameters are allowed: see man(7), man(1) and
+	http://www.tldp.org/HOWTO/Man-Page/q2.html.	-->
+	<!ENTITY dhsection   "5">
+	<!ENTITY dhdate      "May 19, 2011">
+]>
+<refentry>
+	<refentryinfo>
+		<title>&dhtitle;</title>
+		<!-- Better put a suite name instead of &dhpackage; into productname -->
+		<productname>&dhsuite;</productname>
+		<releaseinfo role="version">&dhrelease;</releaseinfo>
+		<authorgroup>
+			<author>
+				<contrib>Developer</contrib>
+				<firstname>&dhfirstname;</firstname>
+				<surname>&dhsurname;</surname>
+				<address>
+					<email>&dhemail;</email>
+				</address>
+			</author>
+		</authorgroup>
+		<date>&dhdate;</date>
+	</refentryinfo>
+	<refmeta>
+		<refentrytitle>&dhproduct;</refentrytitle>
+		<manvolnum>&dhsection;</manvolnum>
+		<refmiscinfo class="version">&dhrelease;</refmiscinfo>
+	</refmeta>
+	<refnamediv>
+		<refname>&dhproduct;</refname>
+		<refpurpose>tool for power management of Sony Vaio laptop devices configuration file</refpurpose>
+	</refnamediv>
+	<refsynopsisdiv>
+		<cmdsynopsis>
+			<command>&dhproduct;</command>
+		</cmdsynopsis>
+	</refsynopsisdiv>
+		<refsect1 id="syntax">
+		<title>SYNTAX</title>
+		<para>The configuration file is actually a shell script snippet. Lines starting with hash marks are taken as comments, empty lines are
+ignored. Changes to the file should be made only by commenting/uncommenting lines.
+		</para>
+	</refsect1>
+	<refsect1 id="description">
+		<title>DESCRIPTION</title>
+		<para><citerefentry><refentrytitle>vaiopower</refentrytitle><manvolnum>8</manvolnum></citerefentry> is automatically invoked at boot time,
+		and it disables all devices listed in this configuration file.
+		</para>
+		<para>Support devices are: sound card, DVD drive, Bluetooth and WWAN adapter.
+		</para>
+	</refsect1>
+	<refsect1 id="bugs">
+		<title>BUGS</title>
+		<para>Bug tracking system can be found at <ulink url="http://bugs.vaio-utils.org/"/> .</para>
+	</refsect1>
+	<refsect1 id="see_also">
+		<title>SEE ALSO</title>
+		<!-- In alphabetical order. -->
+		<para>
+			<citerefentry>
+				<refentrytitle>vaiopower</refentrytitle>
+				<manvolnum>8</manvolnum>
+		    </citerefentry>
+		</para>
+	</refsect1>
+</refentry>
