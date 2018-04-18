@@ -49,10 +49,10 @@ DEV=$(echo  "$1" | tr '[:upper:]' '[:lower:]')
 MODE=$(echo "$2" | tr '[:upper:]' '[:lower:]')
 
 case "$MODE" in
-  up|on|1)
+  up|on|1|pre)
 	MODE="up"
 	;;
-  down|off|0)
+  down|off|0|post)
 	MODE="down"
 	;;
   toggle)

@@ -9,14 +9,4 @@
 
 [ -x ###SBINDIR###/vaiopower ] || exit $NA
 
-case "$1" in
-	hibernate|suspend)
-		###SBINDIR###/vaiopower sleep on
-		;;
-	thaw|resume)
-		###SBINDIR###/vaiopower sleep off
-		;;
-	*)
-		exit $NA
-		;;
-esac
+###SBINDIR###/vaiopower sleep $1

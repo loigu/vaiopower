@@ -15,7 +15,7 @@ else
 endif
 
 UDEVDIR     := /etc/udev/rules.d
-SLEEPDIR    := /etc/pm/sleep.d
+SLEEPDIR    := /usr/lib/systemd/system-sleep
 BASHCOMPDIR := /etc/bash_completion.d
 
 all:
@@ -31,7 +31,7 @@ copy-udev:
 	sed -i -e 's;###SBINDIR###;$(sbindir);' $(DESTDIR)$(UDEVDIR)/85-vaiopower.rules
 copy-sleep:
 	$(INSTALL) -d $(DESTDIR)$(SLEEPDIR)
-	$(INSTALL) sleep/vaiopower.in $(DESTDIR)$(SLEEPDIR)/vaiopower
+	$(INSTALL) sleep/vaiopower-systemd.hook.in $(DESTDIR)$(SLEEPDIR)/vaiopower
 	sed -i -e 's;###SBINDIR###;$(sbindir);' $(DESTDIR)$(SLEEPDIR)/vaiopower
 copy-bash:
 	$(INSTALL) -d $(DESTDIR)$(BASHCOMPDIR)
